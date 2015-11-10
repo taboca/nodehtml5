@@ -1,0 +1,41 @@
+{
+  "name": "taboca",
+  "version": "0.1.0",
+  "description": "aula",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist ./temp-css",
+    "mkdir": "mkdir -p ./dist ./temp-css",
+    "lint": "eslint *.js",
+    "lintv": "eslint --version",
+    "dev": "http-server ./dist -p 8866",
+    "gencss": "npm run genless && npm run genautoprefixer",
+    "genless": "lessc ./src/style.less  > ./temp-css/style.css",
+    "node_show": "./tasks/show.js marcio",
+    "genautoprefixer": "postcss --use autoprefixer ./temp-css/*.css -d ./dist/",
+    "build": "npm run build:html & npm run build:vendor & npm run build:client",
+    "build:html": "cp ./src/index.html ./dist/.",
+    "build:vendor": "npm run build:vendor:objectass & npm run build:vendor:merge",
+    "build:client": "npm run build:client:ajax & npm run build:client:app",
+    "build:vendor:objectass": "browserify -r object-assign > ./dist/objass.js",
+    "build:vendor:merge": "browserify -r 'lodash/object/merge' > ./dist/merge.js",
+    "build:client:ajax": "browserify -x 'lodash/object/merge' ./src/main-ajax.js > ./dist/main-ajax.js",
+    "build:client:app": "browserify -x object-assign  ./src/main.js > ./dist/main.js",
+    "prebuild": "npm run clean && npm run mkdir",
+    "test": "npm run build"
+  },
+  "author": "fcz",
+  "license": "AGPL-3.0",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "~6.1.0",
+    "browserify": "^12.0.1",
+    "eslint": "^1.9.0",
+    "glob": "^5.0.15",
+    "http-server": "^0.8.5",
+    "less": "^2.5.3",
+    "lodash": "^3.10.1",
+    "object-assign": "^4.0.1",
+    "postcss-cli": "~2.3.2"
+  }
+}

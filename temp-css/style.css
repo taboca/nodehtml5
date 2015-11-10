@@ -1,0 +1,41 @@
+/* display: flex; */
+p,
+div {
+  display: flex;
+}
+@media only screen and (min-width: 160px) {
+  p,
+  div {
+    font-size: 80%;
+  }
+}
+@media only screen and (min-width: 240px) {
+  p,
+  div {
+    font-size: 100%;
+  }
+}
+@media only screen and (min-width: 320px) {
+  p,
+  div {
+    font-size: 120%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  p,
+  div {
+    font-size: 160%;
+  }
+}
+@media only screen and (min-width: 1260px) {
+  p,
+  div {
+    font-size: 170%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  p,
+  div {
+    font-size: 180%;
+  }
+}
